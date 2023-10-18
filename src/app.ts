@@ -1,5 +1,5 @@
 import express from "express";
-//import userRoutes from "./routes/userRoutes";
+import rotasUsuario from "./routes/rotasUsuario.js"
 //import technologyRoutes from "./routes/technologyRoutes";
 //import {errorMiddleware} from "./middlewares/error";
 
@@ -7,7 +7,7 @@ const app = express();
 const porta = 3000;
 
 app.use(express.json());
-//app.use("/user", userRoutes);
+app.use("/user", rotasUsuario);
 //app.use("/technologies", technologyRoutes);
 //app.use(errorMiddleware);
 
