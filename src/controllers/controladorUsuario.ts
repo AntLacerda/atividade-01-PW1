@@ -23,7 +23,7 @@ const store = (req: Request, res: Response) => {
     }
     const criarUsuario = userServices.criarUsuario(user);
     if(!criarUsuario){
-        console.log("Não foi possível criar usuário!");
+        return res.status(400).send({message: "Não foi possível encontrar usuário"})
     } else {
         return res.status(201).json(user);
     }
