@@ -5,7 +5,7 @@ export const contaUsuarioExiste = (req: Request, res: Response, next: NextFuncti
     const {username} = req.headers;
     const user = userServices.buscarUsuarioPorUsername(username as string);
     if(!user) {
-        console.log("Usuario não encontrado")!
+        return res.status(404).send({message:"Usuario não encontrado"});
     } else {
         next();
     }

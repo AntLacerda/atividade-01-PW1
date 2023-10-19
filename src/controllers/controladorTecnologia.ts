@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { tecnologyServices } from "../services/servicoTecnologia";
 import { v4 as uuid } from "uuid";
+import { log } from "console";
 
 const index = (req: Request, res: Response) => {
     const {username} = req.headers;
@@ -12,7 +13,7 @@ const store = (req: Request, res: Response) => {
     const {username} = req.headers;
     const {titulo, prazoFinal} = req.body;
     if(!titulo || !prazoFinal) {
-        alert("Titulo ou prazoFinal são necessários!")
+        console.log("Titulo ou prazoFinal são necessários!");
     } else {
         const tecnologia = {
             id: uuid(),
@@ -23,9 +24,9 @@ const store = (req: Request, res: Response) => {
         }
 
         const criarTecnologia = tecnologyServices.criarTecnologia(username as string, tecnologia);
-
+        
         if(!criarTecnologia){
-            alert("Não foi possível cadastrar a tecnologia!");
+            console.log("Não foi possível cadastrar a tecnologia!");
         } else {
             return res.status(201).json(tecnologia);
         }
@@ -37,12 +38,12 @@ const update = (req: Request, res: Response) => {
     const {idTec} = req.params;
     const {titulo, prazoFinal} = req.body;
     if(!titulo || !prazoFinal){
-        alert("Titulo ou prazoFinal é necessário!");
+        console.log("Titulo ou prazoFinal é necessário!");
     } else {
         const atualizaTecnologia = tecnologyServices.atualizarTecnologia(username as string, idTec, titulo, prazoFinal);
 
         if(!atualizaTecnologia) {
-            alert("Tecnologia não encontrada!");
+            console.log("Tecnologia não encontrada!");
         } else {
             return res.status(204).send();
         }
@@ -54,7 +55,7 @@ const updateStatus = (req: Request, res: Response) => {
     const {idTec} = req.params;
     const atualizarTecnologia = tecnologyServices.atualizarStatusTecnologia(username as string, idTec);
     if(!atualizarTecnologia) {
-        alert("Tecnologia não encontrada!");
+        console.log("Tecnologia não encontrada!");
     } else {
         return res.status(204).send();
     }
@@ -64,8 +65,9 @@ const destroy = (req: Request, res: Response) => {
     const {username} = req.headers;
     const {idTec} = req.params;
     const deletarTecnologia = tecnologyServices.deletarTecnologia(username as string, idTec);
+    
     if(!deletarTecnologia) {
-        alert("Tecnologia não encontrada!")
+        console.log("Tecnologia não encontrada!")
     } else {
         return res.status(204).send();
     }

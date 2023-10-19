@@ -6,8 +6,8 @@ const router = Router();
 
 router.get("/", contaUsuarioExiste, controladorTecnologia.index);
 router.post("/", contaUsuarioExiste, controladorTecnologia.store);
-router.put("/:id", contaUsuarioExiste, controladorTecnologia.update);
-router.patch("/:id/studied", contaUsuarioExiste, controladorTecnologia.updateStatus);
-router.delete("/:id", contaUsuarioExiste, controladorTecnologia.destroy);
+router.put("/:idTec", contaUsuarioExiste, controladorTecnologia.update);
+router.patch("/:idTec/studied", contaUsuarioExiste, controladorTecnologia.updateStatus);
+router.delete("/:idTec", contaUsuarioExiste, controladorTecnologia.destroy);
 
 export default router;

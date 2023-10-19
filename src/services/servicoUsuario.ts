@@ -2,12 +2,12 @@ import { database } from "../database/datab";
 import { UsuarioDTO } from "../dtos/dtoUsuario";
 
 const buscarUsuarioPorId = (id: string) => {
-    const user = database.find((idAtual)=>{idAtual.id === id});
+    const user = database.find((idAtual)=>idAtual.id === id);
     return user;
 }
 
 const buscarUsuarioPorUsername = (username: string) => {
-    const user = database.find((usernameAtual)=>{usernameAtual.username===username});
+    const user = database.find((usernameAtual)=>usernameAtual.username===username);
     return user;
 }
 

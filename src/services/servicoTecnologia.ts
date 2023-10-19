@@ -1,11 +1,12 @@
+
 import { database } from "../database/datab";
 import { TecnologiaDTO } from "../dtos/dtoTecnologia";
 import { userServices } from "./servicoUsuario";
 
 const buscarTecnologia = (idTec: string, username: string) => {
     const user = userServices.buscarUsuarioPorUsername(username);
-    const tecnology = database.find(()=>{user?.tecnologias.find((tecnologia: TecnologiaDTO)=>{tecnologia.id===idTec})})
-
+    const tecnology = database.find(()=>user?.tecnologias.find((tecnologia: TecnologiaDTO)=>tecnologia.id===idTec));
+    
     if(!tecnology) {
         return false;
     } else {
